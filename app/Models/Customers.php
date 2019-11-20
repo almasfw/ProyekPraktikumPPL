@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class Customers extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -17,7 +17,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'phone_number', 'email', 'password',
+        'email', 'username', 'password'
     ];
 
     /**
@@ -29,14 +29,9 @@ class User extends Authenticatable implements JWTSubject
         'password'
     ];
 
-    public function workout()
+    public function preferences()
     {
-        return $this->hasMany('App\Models\Workout');
-    }
-
-    public function schedule()
-    {
-        return $this->hasMany('App\Models\Schedule');
+        return $this->hasMany('App\Models\Preferences');
     }
 
     public function result()

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Customers;
 use JWTAuth;
 
 
@@ -14,15 +14,13 @@ class AuthController extends Controller
     {
         // die('hard!');
         $this->validate($request, [
-            'username'      => 'required|unique:users',
-            'name'          => 'required',
-            'email'         => 'required|unique:users',
-            'phone_number'  => 'required',
+            'username'      => 'required|unique:customers',
+            'email'         => 'required|unique:customers',
             'password'      => 'required'
         ]);
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
-        User::create($data);
+        Customers::create($data);
         
         // User::create([
         //     'username'      => $request->json('username'),
@@ -61,7 +59,7 @@ class AuthController extends Controller
 
         // all good so return the token
         return response()->json([
-            'user_id' => $request->user()->id,
+            'user_id' => $request->customers()->userID,
             'token'   => $token
         ]);
 

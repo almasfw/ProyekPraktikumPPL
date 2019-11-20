@@ -4,14 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Result extends Model
+class Preferences extends Model
 {
     protected $fillable = [
-        'userID', 'date', 'menuPagiID', 'menuSiangID', 'menuSoreID'
+        'userID','menuID', 'score'
     ];
 
     public function customers()
     {
         return $this->belongsTo('App\Models\Customers');
     }
+
+	public function menus()
+	{
+		return $this->belongsTO('App\Models\Menus');
+	}
+
 }

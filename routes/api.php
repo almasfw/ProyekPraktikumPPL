@@ -25,7 +25,7 @@ Route::group(['middleware' => ['api']], function () {
 
 
         //============ Workout Data ==================
-        Route::post('/workout', 'WorkoutController@store');
+        Route::post('/workout', 'WorkoutController@store');		//user minta generated workout
         // Route::put('/tutorial/{id}', 'TutorialController@update');
         // Route::delete('/tutorial/{id}', 'TutorialController@destroy');
 
